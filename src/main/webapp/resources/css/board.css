@@ -1,0 +1,7 @@
+@charset "UTF-8";
+@import url("common.css");
+
+#wrapper{background-image:url("../img/bgimage/jpg");}
+#board_tab{width:90%; margin:0 auto;}
+#board_menu{border: 1px solid black;}
+#board_menu>th tr{text-align: center; border: 1px solid black;height:30px;}

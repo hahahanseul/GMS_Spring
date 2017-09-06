@@ -1,0 +1,55 @@
+@charset "UTF-8";
+html,body{width:100%; height:100%;}
+footer{position:absolute; background-color:Lavender;bottom:0; left:0; width:100%;height:150px;}
+table{border-collapse: collapse;}
+#wrapper{width:100%;min-height:100%;position:relative;padding-bottom:150px;}
+#container{width:90%; padding:20px 0px;margin:0 auto; position:relative;}
+#go_main, #db_tester{float:right; padding-right:30px;}
+#title{text-align: center;}
+#clock{text-align:center; color: red; font-size: 20px; padding: 20px 0px;}
+#footer-box{padding:20px 50px;}
+.gms-text-center{text-align: center;}
+.gms-border-black{border: 1px solid black;}
+.gms-width-100pro{width:100%;}
+.gms-width-30pro{width:30%;}
+.gms-text-deco-none{text-decoration: none;}
+.gms-margin-auto{margin:0 auto;}
+.gms-float-right{float:right;}
+.gms-list-style-none{list-style-type:none;}
+.gms-inline-block{display:inline-block;}
+.gms-height-30px{height:30px;}
+.gms-widht-5pro{width: 5%;}
+.gms-widht-10pro{width: 10%;}
+.gms-widht-25pro{width: 25%;}
+.gms-widht-35pro{width: 35%;}
+.login-member{position:absolute; right:20px; top:15px; color:white;}
+.container-fluid{position: relative;}
+.col-sm-4>h3 {text-align: center;}
+.col-sm-4>ul>li {text-align: center;}
+#logout{color: white;}
+/*background-color*/
+.gms-background-red{background-color: red;}
+.gms-background-blue{background-color: blue;}
+
+/*font-color*/
+.gms-fontcolor-white{color:white;}
+.gms-fontcolor-grey{color:grey;}
+
+/* unvisited link */
+a:link {color: black;}
+
+/* visited link */
+/* mouse over link */
+a:hover {color: hotpink;}
+
+/* selected link */
+a:active {color: blue;}
+
+/*index.html*/
+#index_tab{width:90%; margin:0 auto;}
+#index_menu>th{border: 1px solid black;width:30%;text-align: center; padding:10px 0px;}
+#index_menu>td{border: 1px solid black;width:30%;text-align: center; padding: 20px;}
+.index_ul{width:100%; margin: 10px -25px;list-style-type:none;}
+.index_ul>li{border: 1px solid black; text-align:center;padding:5px 0px;}
+.index_ul>li>a{text-decoration: none;}
+#footer-box{width:80%; height:50px; margin:10px auto;}
