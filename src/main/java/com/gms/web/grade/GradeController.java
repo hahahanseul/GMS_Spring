@@ -13,21 +13,21 @@ public class GradeController {
 	@RequestMapping("/add")
 	public String addGrade(Model model) {
 		logger.info("{}","GradeController >addGrade");
-		return "grade/grade_add";
+		return "auth:grade/grade_add.tiles";
 	}
 	@RequestMapping("/list")
 	public String showGrade(Model model) {
 		logger.info("{}","GradeController > showGrade");
-		return "grade/grade_list";
+		return "auth:grade/grade_list.tiles";
 	}
 	@RequestMapping("/detail")
 	public String detailGrade(Model model) {
 		logger.info("{}","GradeController > detailGrade");
-		return "grade/grade_detail";
+		return "auth:grade/grade_detail.tiles";
 	}
 	@RequestMapping("/update")
 	public String updateGrade(Model model) {
 		logger.info("{}","GradeController > updateGrade");
-		return "grade/grade_update";
+		return "auth:grade/grade_update.tiles";
 	}
 }

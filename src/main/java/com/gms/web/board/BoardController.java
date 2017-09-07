@@ -14,21 +14,21 @@ public class BoardController {
 	@RequestMapping("/add")
 	public String addBoard(Model model) {
 		logger.info("{}","BoardController >addBoard");
-		return "grade/grade_add";
+		return "auth:board/board_write.tiles";
 	}
 	@RequestMapping("/list")
 	public String showBoard(Model model) {
 		logger.info("{}","MemberController > showBoard");
-		return "grade/grade_list";
+		return "auth:board/board_list.tiles";
 	}
 	@RequestMapping("/detail")
 	public String detailBoard(Model model) {
 		logger.info("{}","BoardController > detailBoard");
-		return "grade/grade_detail";
+		return "auth:board/board_detail.tiles";
 	}
 	@RequestMapping("/update")
 	public String updateBoard(Model model) {
 		logger.info("{}","BoardController > updateBoard");
-		return "grade/grade_update";
+		return "auth:board/board_update.tiles";
 	}
 }

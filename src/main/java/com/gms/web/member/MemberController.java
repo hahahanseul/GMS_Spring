@@ -13,16 +13,16 @@ public class MemberController {
 	@RequestMapping("/add")
 	public String addMember(Model model) {
 		logger.info("{}","MemberController >addMember");
-		return "member/member_add";
+		return "auth:member/member_add.tiles";
 	}
 	@RequestMapping("/list")
 	public String showMembers(Model model) {
 		logger.info("{}","MemberController > showMembers");
-		return "member/member_list";
+		return "auth:member/member_list.tiles";
 	}
 	@RequestMapping("/search")
 	public String searchMember(Model model) {
 		logger.info("{}","MemberController > searchMember");
-		return "member/member_search";
+		return "auth:member/member_search.tiles";
 	}
 }
