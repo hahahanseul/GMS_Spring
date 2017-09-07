@@ -16,6 +16,8 @@
       <jsp-version>2.2</jsp-version>
       <jstl-version>1.2</jstl-version>
       <tiles-version>3.0.7</tiles-version>
+      <lombok-version>1.16.8</lombok-version>
+      <el-version>1.0</el-version>
    </properties>
    <dependencies>
       <!-- Spring -->
@@ -175,8 +177,20 @@
     	<artifactId>tiles-el</artifactId>
    		<version>${tiles-version}</version>
 	 </dependency>
-      
-   
+      <!-- lombok -->
+	<dependency>
+    	<groupId>org.projectlombok</groupId>
+    	<artifactId>lombok</artifactId>
+    	<version>${lombok-version}</version>
+    	<scope>provided</scope>
+	</dependency>
+	  <!-- EL --> 
+	<dependency>
+    	<groupId>commons-el</groupId>
+    	<artifactId>commons-el</artifactId>
+    	<version>${el-version}</version>
+	</dependency>
+	  
       <!-- Test -->
       <dependency>
          <groupId>junit</groupId>
