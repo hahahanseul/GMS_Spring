@@ -1,11 +1,9 @@
 package com.gms.web.command;
-
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import com.gms.web.constant.*;
 import lombok.Data;
-
 
 @Data @Lazy @Component
 public class CommandDTO implements Commandable{
