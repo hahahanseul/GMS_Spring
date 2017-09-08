@@ -4,6 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gms.web.mapper.BoardMapper">
   <select id="selectById" resultType="com.gms.web.board.ArticleDTO">
-    select * from Board where id = #{id}
+    select * from Board where article_seq = #{articleSeq}
   </select>
 </mapper>
