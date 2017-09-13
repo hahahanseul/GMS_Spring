@@ -57,31 +57,32 @@ app.main=(function(){
 	var onCreate = function(){
 		setContentView();
 		$('.list-group li').eq(0).on('click',function(){
-			app.controller.moveTo('member','add');
+			app.controller.moveTo('member','member_add');
 		});
 		$('.list-group li').eq(1).on('click',function(){
-			app.controller.moveTo('member','list');
+			alert('####memlist');
+			app.member.list(1);
 		});
 		$('.list-group li').eq(2).on('click',function(){
 			app.controller.detailStudent(prompt('당신은 현석씨입니까?'));
 		});
 		$('.list-group li').eq(3).on('click',function(){
-			app.controller.moveTo('member','search');
+			app.controller.moveTo('member','member_search');
 		});
 		$('.list-group li').eq(4).on('click',function(){
 			app.controller.deleteTarget('member');
 		});
 		$('.list-group li').eq(5).on('click',function(){
-			app.controller.moveTo('grade','add');
+			app.controller.moveTo('grade','grade_add');
 		});
 		$('.list-group li').eq(6).on('click',function(){
-			app.controller.moveTo('grade','list');
+			app.controller.moveTo('grade','grade_list');
 		});
 		$('.list-group li').eq(7).on('click',function(){
-			app.controller.moveTo('grade','detail');
+			app.controller.moveTo('grade','grade_detail');
 		});
 		$('.list-group li').eq(8).on('click',function(){
-			app.controller.moveTo('grade','update');
+			app.controller.moveTo('grade','grade_update');
 		});
 		$('.list-group li').eq(9).on('click',function(){
 			app.controller.deleteTarget('grade');
@@ -90,13 +91,13 @@ app.main=(function(){
 			app.controller.moveTo('board','add');
 		});
 		$('.list-group li').eq(11).on('click',function(){
-			app.controller.moveTo('board','list');
+			app.controller.moveTo('board','board_list');
 		});
 		$('.list-group li').eq(12).on('click',function(){
-			app.controller.moveTo('board','detail');
+			app.controller.moveTo('board','board_detail');
 		});
 		$('.list-group li').eq(13).on('click',function(){
-			app.controller.moveTo('board','update');
+			app.controller.moveTo('board','board_update');
 		});
 		$('.list-group li').eq(14).on('click',function(){
 			app.controller.deleteTarget('board');
@@ -150,27 +151,27 @@ app.navbar=(function(){
 	var onCreate = function(){
 		setContentView();
 		$('#go-home').on('click',function(){
-			app.controller.moveTo('','home');
+			app.controller.moveTo('common','main');
 		});
 		$('.dropdown-menu a').eq(0).on('click',function(){
 			alert('0');
-			app.controller.moveTo('member','add');
+			app.controller.moveTo('member','member_add');
 		});
 		$('.dropdown-menu a').eq(1).on('click',function(){
-			alert('1');
-			app.controller.list('member','list','1');
+			alert('###');
+			app.member.list(1);
 		});
 		$('.dropdown-menu a').eq(2).on('click',function(){
 			alert('2');
-			app.controller.moveTo('member','search');
+			app.controller.moveTo('member','member_search');
 		});
 		$('.dropdown-menu a').eq(3).on('click',function(){
 			alert('3');
-			app.controller.moveTo('member','list');
+			app.controller.moveTo('member','member_list');
 		});
 		$('.dropdown-menu a').eq(3).on('click',function(){
 			alert('3');
-			app.controller.moveTo('member','list');
+			app.controller.moveTo('member','member_list');
 		});
 		$('.dropdown-menu a').eq(4).on('click',function(){
 			alert('4');
@@ -196,11 +197,11 @@ app.member=(function(){
 		setContentView();
 			$('#updateBtn').on('click',function(){
 				alert('정보수정 클릭됐어');
-				sessionStorage.setItem('id', $('#stu_id').val());
+			/*	sessionStorage.setItem('id', $('#stu_id').val());
 				sessionStorage.setItem('name', $('#stu_name').text());
 				sessionStorage.setItem('phone',$('#stu_phone').text());
 				sessionStorage.setItem('email',$('#stu_email').text());
-				sessionStorage.setItem('title',$('#stu_title').text());
+				sessionStorage.setItem('title',$('#stu_title').text());*/
 				alert(sessionStorage.getItem('phone'));
 				controller.moveTo('member','member_update');
 			});
@@ -208,8 +209,11 @@ app.member=(function(){
 	var setContentView = function(){
 		alert('member Detail 이라능');
 	};
+	var list=function(pageNumber){
+		location.href=app.path.ctx()+'/member/list/'+pageNumber;
+	}
 	return {
-		init : init,
+		init : init, list : list
 	};
 })();
 app.grade=(function(){
@@ -246,7 +250,7 @@ app.controller=(function(){
 		
 	};
 	var moveTo = function(dir,page){
-		location.href=app.path.ctx()+'/'+dir+'/' +page;
+		location.href=app.path.ctx()+'/common/path'+'/'+dir+'/' +page;
 	};
 	var logout = function(dir, page){
 		location.href=app.path.ctx()+"/"+dir+".do?action=logout&page="+page;
@@ -255,22 +259,25 @@ app.controller=(function(){
 		prompt(dir +'의 ID는?');
 	}
 	var list =function (dir,page,pageNumber){
-		location.href=app.path.ctx()+"/"+dir+".do?action=list&page="+page+"&pageNumber=" + pageNumber;
+		location.href=app.path.ctx()+"/"+dir+".do?action=list&page="+page;
 	};
-	var updateStudent= function(id,email){
-		alert('수정할 ID는 ' + id);
-		location.href=app.path.ctx()+"/member.do?action=update&page=member_update&id=" +id+"&email="+email;
+	var updateStudent= function(){
+		alert('수정하기!!');
+		$('#update_form').attr('action',app.path.ctx()+"/student/update");
+		$('#update_form').attr('method','post');
+		return true;
 	};
 	var deleteStudent=function(id){
 		alert('삭제할 ID는 ' + id);
-		location.href=app.path.ctx()+"/member.do?action=delete&page=member_list" ;
+		location.href=app.path.ctx()+"/member/delete/" +id ;
 	};
-	var detailStudent=function(x){
-		alert('detailStudent' + x);
-		location.href=app.path.ctx()+"/member.do?action=detail&page=member_detail&id="+x;
+	var detailStudent=function(id){
+		alert('상세보기:: ' + id);
+		location.href=app.path.ctx()+"/member/detail/" + id;
 	};
 	var searchStudent= function (){
-		var search=document.getElementById('search').value;
+		alert('검색버튼 클릭');
+		var search=$('search').value;
 		if(search === ""){
 			alert('검색어를 입력하세요');
 			return false;
@@ -285,6 +292,7 @@ app.controller=(function(){
 		list:list,
 		deleteTarget:deleteTarget,
 		detailStudent:detailStudent,
+		deleteStudent:deleteStudent,
 		updateStudent:updateStudent,
 		searchStudent:searchStudent
 	};

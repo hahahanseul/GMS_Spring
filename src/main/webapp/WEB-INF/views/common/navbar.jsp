@@ -40,7 +40,7 @@
      	</ul> 
      </li>
     </ul>
-    <span class="login-member">${sessionScope.user.name}&nbsp;<a id="logout")>로그아웃</a></span>
+    <span class="login-member">${user.name}&nbsp;<a id="logout")>로그아웃</a></span>
   </div>
 </nav>
 <script>

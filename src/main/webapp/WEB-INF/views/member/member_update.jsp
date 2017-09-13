@@ -13,13 +13,14 @@
 	               	</div>
 	            </div> 
 				<div class="main-login main-center">
-					<form class="form-horizontal" method="post" action="#">
+					<form id="update_form" name="update_form" class="form-horizontal">
+						<input id="id" name="id" type="hidden" class="form-control" value="${student.id}" readonly/>
 						<div class="form-group">
 							<label for="name" class="cols-sm-2 control-label">Name</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input id="name" name="name" type="text" class="form-control"/>
+									<input id="name" name="name" type="text" class="form-control" value="${student.name}" readonly/>
 								</div>
 							</div>
 						</div>
@@ -29,17 +30,17 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input id="email" name="email" type="text" class="form-control"/>
+									<input id="email" name="email" type="text" class="form-control" value="${student.email}"/>
 								</div>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label for="username" class="cols-sm-2 control-label">Username</label>
+							<label for="phone" class="cols-sm-2 control-label">phone</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<input id="phone" name="phone"type="text" class="form-control"/>
+									<input id="phone" name="phone"type="text" class="form-control"/ value="${student.phone}">
 								</div>
 							</div>
 						</div>
@@ -49,7 +50,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input id="password" name="password" type="password" class="form-control" data-toggle="popover" placeholder="Enter your Password"/>
+									<input id="pw" name="pw" type="password" class="form-control" data-toggle="popover" />
 								</div>
 								<span id="passwordInfo" class="hide">
 								    <ul>
@@ -68,20 +69,16 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input id="confirm" name="confirm" type="password" class="form-control" placeholder="Confirm your Password"/>
+									<input id="confirm" name="confirm" type="password" class="form-control" />
 								</div>
 								<span id="confirmPass"></span>
 							</div>
 						</div>
 
 						<div class="form-group ">
-							<button id="confirmBtn" type="button" class="btn btn-primary btn-lg btn-block login-button">UPDATE</button>
+							<input id="confirmBtn" onclick="app.controller.updateStudent()" type="submit" class="btn btn-primary btn-lg btn-block login-button" />
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
-<script>
-memberUpdate.init();
-</script>		
-<jsp:include page="../common/footer.jsp" />

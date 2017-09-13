@@ -3,11 +3,48 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import com.gms.web.constant.*;
-import lombok.Data;
+import com.gms.web.member.MemberDTO;
 
-@Data @Lazy @Component
+ @Lazy @Component
 public class CommandDTO implements Commandable{
 	protected String action,pageNumber,view, column, search, dir, page ,startRow, endRow;
+	protected MemberDTO member;
+	public void setEndRow(String endRow) {
+		this.endRow = endRow;
+	}
+	public void setPage(String page) {
+		this.page = page;
+	}
+	public String getStartRow() {
+		return startRow;
+	}
+	public void setStartRow(String startRow) {
+		this.startRow = startRow;
+	}
+	public String getAction() {
+		return action;
+	}
+	public String getPageNumber() {
+		return pageNumber;
+	}
+	public String getView() {
+		return view;
+	}
+	public String getColumn() {
+		return column;
+	}
+	public String getSearch() {
+		return search;
+	}
+	public String getDir() {
+		return dir;
+	}
+	public String getPage() {
+		return page;
+	}
+	public String getEndRow() {
+		return endRow;
+	}
 	public void setPageNumber(String pageNumber) {
 		this.pageNumber=(pageNumber==null)?
 				"1": pageNumber;
@@ -26,7 +63,7 @@ public class CommandDTO implements Commandable{
 	public void setSearch(String search) {
 		this.search = (search==null)?
 				"none": search;
-		System.out.println("검색어 ::   " +this.search);
+		System.out.println("commandDTO검색어 ::   " +this.search);
 	}
 	@Override
 	public void process() {

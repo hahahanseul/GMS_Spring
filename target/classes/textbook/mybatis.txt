@@ -1,0 +1,66 @@
+동적 SQL을 처리하는 방법 
+
+OGNL 기반의 표현식
+if
+choose (when, otherwise)
+trim (where, set) 
+foreach
+
+if 문자열 검색기능 
+<select id="find" parameterType="com.gms.web.Command" resultType="com.gms.web.Domain">
+  SELECT * FROM BLOG 
+  WHERE state = ‘ACTIVE’ 
+  <if test="title != null">
+    AND title like '%${name}%'    // #{title}
+  </if>
+  <if test="author != null and author.name != null">
+    AND author_name like #{author.name}
+  </if>      //다중조건식
+</select>
+
+
+choose, when, otherwise    // 5개 중에 하나의 값만 찾게 만드려면 이거
+<select id="findActiveBlogLike" 
+     resultType="Blog">
+  SELECT * FROM BLOG WHERE state = ‘ACTIVE’
+  <choose>
+    <when test="title != null">
+      AND title like #{title}
+    </when>
+    <when test="author != null and author.name != null">
+      AND author_name like #{author.name}
+    </when>
+    <otherwise>
+      AND featured = 1
+    </otherwise>
+  </choose>
+</select>
+
+trim  //별로 안써 
+<select id="findActiveBlogLike" 
+     resultType="Blog">
+  SELECT * FROM BLOG 
+  <where> 
+    <if test="state != null">
+         state = #{state}
+    </if> 
+    <if test="title != null">
+        AND title like #{title}
+    </if>
+    <if test="author != null and author.name != null">
+        AND author_name like #{author.name}
+    </if>
+  </where>
+</select>
+
+foreach
+<select id="selectPostIn" resultType="domain.blog.Post">
+  SELECT *
+  FROM POST P
+  WHERE ID in
+  <foreach item="item" index="index" collection="list"
+      open="(" separator="," close=")">
+        #{item}
+  </foreach>
+</select>
+

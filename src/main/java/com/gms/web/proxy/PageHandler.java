@@ -8,7 +8,7 @@ public class PageHandler{
 
 	public static CommandDTO attr(PageProxy pxy) {
 		CommandDTO cmd = new CommandDTO();
-/*		if (pxy.getPageNumber() <=pxy.getTheNumberOfRows()/pxy.getPageSize()+1) {
+		if (pxy.getPageNumber() <=pxy.getTheNumberOfRows()/pxy.getPageSize()+1) {
 			if(pxy.getPageNumber()== 1) {
 				cmd.setStartRow("1");
 				cmd.setEndRow(String.valueOf(pxy.getPageSize()));
@@ -20,7 +20,7 @@ public class PageHandler{
 						String.valueOf(pxy.getPageNumber()* pxy.getPageSize())
 						);
 			}
-		}*/
+		}
 		return cmd;
 	}
  

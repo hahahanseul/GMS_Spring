@@ -14,16 +14,16 @@
                 </div>
                 <div class="col-md-9 col-xs-12 col-sm-6 col-lg-9">
                     <div class="" style="border-bottom:1px solid black">
-                      <span id="stu_name" style="font-size: 50px;">${requestScope.student.name}</span>
-                      <input type="hidden" id="stu_id" value="${requestScope.student.id}">
-                      <button id="updateBtn" onclick="moveTo('member','member_update')">정보수정</button>
+                      <span id="stu_name" style="font-size: 50px;">${student.name}</span>
+                      <input type="hidden" id="stu_id" value="${student.id}">
+                      <button id="updateBtn" onclick="app.controller.moveTo('member','member_update')">정보수정</button>
                     </div>
                       <hr>
                     <div class="col-md-8">  
                     <ul class=" details">
-                      <li><p id="stu_phone"><span class="glyphicon glyphicon-earphone one" style="width:50px;"></span>${requestScope.student.phone}</p></li>
-                      <li><p id="stu_email"><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>${requestScope.student.email}</p></li>
-                      <li><p id="stu_title"><span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span>${requestScope.student.title}</p></li>
+                      <li><p id="stu_phone"><span class="glyphicon glyphicon-earphone one" style="width:50px;"></span>${student.phone}</p></li>
+                      <li><p id="stu_email"><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>${student.email}</p></li>
+                      <li><p id="stu_title"><span class="glyphicon glyphicon-map-marker one" style="width:50px;"></span>${student.title}</p></li>
                       <li><p><span class="glyphicon glyphicon-credit-card one" style="width:50px;"></span>
                       
              		</p></li>
@@ -64,7 +64,3 @@
               </div>
           </div>
 </div>
-<script>
-memberDetail.init();
-</script>
-<jsp:include page="../common/footer.jsp" />

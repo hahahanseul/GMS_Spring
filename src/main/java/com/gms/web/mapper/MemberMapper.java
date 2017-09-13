@@ -10,13 +10,13 @@ import com.gms.web.member.MemberDTO;
 import com.gms.web.member.StudentDTO;
 @Repository
 public interface MemberMapper {
-	public String insert(Map<String, Object> map);
+	public int insert(Map<String, Object> map);
 	public List<?> selectAll(CommandDTO cmd);
-	public String countMembers(CommandDTO cmd);
+	public String countMembers();
 	public StudentDTO selectById(CommandDTO cmd);
 	public List<?> selectByName(CommandDTO cmd);
-	public String update(MemberDTO bean);
-	public String delete(CommandDTO cmd);
+	public int update(MemberDTO bean);
+	public int delete(CommandDTO cmd);
 	public MemberDTO login(CommandDTO cmd);
 	//MemberBean[] list=new MemberBean[4];
 }

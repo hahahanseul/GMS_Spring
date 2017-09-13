@@ -2,6 +2,7 @@
 	<header>
 		<div class="jumbotron text-center">
 	<h1>Grade Management System</h1>
+	<div style="text-align: center; width:100%;height: 50px;"><h4 style="font-size: 20px; color:red;">${message}</h4></div>
 </div>
 	</header>
 	<div id="container">
