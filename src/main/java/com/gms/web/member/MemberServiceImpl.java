@@ -8,9 +8,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.gms.web.command.CommandDTO;
+import com.gms.web.grade.GradeDTO;
 import com.gms.web.grade.MajorDTO;
+import com.gms.web.grade.SubjectDTO;
+import com.gms.web.mapper.GradeMapper;
 import com.gms.web.mapper.MemberMapper;
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -19,15 +23,18 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired MemberDTO member;
 	@Autowired CommandDTO cmd;
 	@Autowired StudentDTO student;
-	@Override
-	public int addMember(Map<String, Object> map) {
+	@Autowired MajorDTO major;
+	@Autowired GradeMapper gMapper;
+	@Override @Transactional
+	public int addMember(Map<?, ?> map) {
+		logger.info("@service addMember {}", "entered");
+		member=(MemberDTO) map.get("member");
+		List<MajorDTO> list = (List<MajorDTO>) map.get("list");
+		System.out.println("id#####" + member.getId());
+		System.out.println("list###" + list);
+		mapper.insert(member);
+		gMapper.insertMajor(list);
 		int result=0;
-		System.out.println("Member Service 진입");
-		MemberDTO m = (MemberDTO)map.get("member");
-		System.out.println("넘어온 회원의 이름:" + m.toString());
-		@SuppressWarnings("unchecked")
-		List<MajorDTO> list = (List<MajorDTO>)map.get("major");
-		System.out.println("넘어온 수강과목:" + list);
 		return result;
 	}
 	@SuppressWarnings("unchecked")

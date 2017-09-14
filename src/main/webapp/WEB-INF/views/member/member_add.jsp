@@ -6,21 +6,21 @@
 </header>
 	<div id="container">
 		<div id="sub_title">회원 추가 </div>
-		<form id="join_form" onsubmit="memberAdd()">
+		<form id="join_form">
 			<fieldset>
 			<legend>join information</legend>
 			<span id="join_id_txt">ID</span>
-			<input id="join_id" type="text" name="join_id" placeholder="아이디"/>
+			<input id="id" type="text" name="id" placeholder="아이디"/>
 			<span id="join_name_txt">NAME</span>
-			<input id="join_name" type="text" name="join_name" placeholder="이름" value="이길동"/>
+			<input id="name" type="text" name="name" placeholder="이름" value="이길동"/>
 			<span id="join_pw_txt">PASSWORD</span>
-			<input id="join_pw" type="password" name="join_pw" placeholder="비밀번호"  value="1"/><br />
+			<input id="pw" type="password" name="pw" placeholder="비밀번호"  value="1"/><br />
 			<span id="join_birth_txt">생년월일</span>
-			<input id="join_birth" type="text" name="join_birth" value="2000.05.05"/><br /><br>
+			<input id="birth" type="text" name="birth" value="2000.05.05"/><br /><br>
 	 		<input type="radio" name="gender" value="여성" checked> 여성
 			<input type="radio" name="gender" value="남성"> 남성<br>
-			<span id="join_email_txt">email</span><input id="join_email" type="email" name="join_email" value="leegd@test.com"/>
-			<span id="join_phone_txt">phone</span><input id="join_phone" type="text" name="join_phone" value="010-0000-0000" />
+			<span id="join_email_txt">email</span><input id="email" type="email" name="email" value="leegd@test.com"/>
+			<span id="join_phone_txt">phone</span><input id="phone" type="text" name="phone" value="010-0000-0000" />
 			<br>
 			<h3>전공</h3>
 			<select name="major">
@@ -45,4 +45,5 @@
 		</form>
 	</div>
 <script>
+app.member.init();
 </script>

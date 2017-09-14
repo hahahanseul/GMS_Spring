@@ -76,9 +76,12 @@
 						</div>
 
 						<div class="form-group ">
-							<input id="confirmBtn" onclick="app.controller.updateStudent()" type="submit" class="btn btn-primary btn-lg btn-block login-button" />
+							<input id="confirmBtn" type="submit" class="btn btn-primary btn-lg btn-block login-button" />
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
+<script>
+	app.controller.init();
+</script>

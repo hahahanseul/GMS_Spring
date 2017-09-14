@@ -5,7 +5,15 @@ import org.springframework.stereotype.Component;
 
 @Lazy @Component
 public class StudentDTO {
-	private String num,id, pw, name, ssn, title, regdate,phone,email;
+	private String num,id, pw, name, ssn, title, regdate,phone,email,subject;
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
 	@Override
 	public String toString() {
 		return "StudentDTO [num=" + num + ", id=" + id + ", pw=" + pw + ", name=" + name + ", ssn=" + ssn + ", title="

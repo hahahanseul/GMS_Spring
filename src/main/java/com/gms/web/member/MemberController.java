@@ -1,6 +1,9 @@
 package com.gms.web.member;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,10 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.gms.web.command.CommandDTO;
-import com.gms.web.complex.PathFactory;
+import com.gms.web.grade.MajorDTO;
+import com.gms.web.grade.SubjectDTO;
 import com.gms.web.proxy.PageProxy;
 
 @Controller
@@ -25,6 +31,29 @@ public class MemberController {
 	@Autowired CommandDTO cmd;
 	@Autowired StudentDTO student;
 	@Autowired PageProxy pxy;
+	@Autowired MemberDTO member;
+	@RequestMapping(value="/add", method=RequestMethod.POST)
+	public String addStudent(@ModelAttribute MemberDTO member, @RequestParam("subject") List<String> list) {
+		logger.info("등록 id :  " +   member.getId()  );
+		logger.info("등록 name :  " +   member.getName()  );
+		logger.info("등록 pw :  " +    member.getPw() );
+		System.out.println("등록과목 : " + list);
+		logger.info("등록과목 : " +    list);
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("member", member);
+		List<MajorDTO> paramList = new ArrayList<>();
+		MajorDTO major = null;
+		for(String m : list) {
+			major=new MajorDTO();
+			major.setId(member.getId());
+			major.setSubjId(m);
+			major.setTitle(m);
+			paramList.add(major);
+		} 
+		paramMap.put("list", paramList);
+		service.addMember(paramMap);
+		return "redirect:/member/list/1";
+	}
 	@RequestMapping("/list/{pageNumber}")
 	public String list(@PathVariable int pageNumber,Model model) {
 		logger.info("member_list{}","진입");
@@ -89,8 +118,9 @@ public class MemberController {
 	@RequestMapping("/update")
 	public String updateStudent(@ModelAttribute MemberDTO member) {
 		logger.info("member update 진입했");
-		System.out.println("넘어온 아이디 :::" + member.getId());
+		//if() {}else {}
+		
 		service.modify(member);
-;		return "redirect:/member/detail/" + member.getId() ;
+		return "redirect:/member/detail/" + member.getId() ;
 	}
 }

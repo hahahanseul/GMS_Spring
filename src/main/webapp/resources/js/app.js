@@ -191,7 +191,7 @@ app.navbar=(function(){
 app.member=(function(){
 	var init = function(){
 		onCreate();
-		detailStudent(x);
+		add();
 	};
 	var onCreate = function(){
 		setContentView();
@@ -207,13 +207,18 @@ app.member=(function(){
 			});
 	};
 	var setContentView = function(){
-		alert('member Detail 이라능');
 	};
 	var list=function(pageNumber){
 		location.href=app.path.ctx()+'/member/list/'+pageNumber;
 	}
+	var add=function(){
+		$('#join_yes_btn').on('click', function() {
+			$('#join_form').attr('action',app.path.ctx()+"/member/add");
+			$('#join_form').attr('method','post');
+		});
+	}
 	return {
-		init : init, list : list
+		init : init, list : list, add:add
 	};
 })();
 app.grade=(function(){
@@ -247,7 +252,7 @@ app.board=(function(){
 
 app.controller=(function(){
 	var init=function(){
-		
+		updateStudent();
 	};
 	var moveTo = function(dir,page){
 		location.href=app.path.ctx()+'/common/path'+'/'+dir+'/' +page;
@@ -262,10 +267,12 @@ app.controller=(function(){
 		location.href=app.path.ctx()+"/"+dir+".do?action=list&page="+page;
 	};
 	var updateStudent= function(){
-		alert('수정하기!!');
-		$('#update_form').attr('action',app.path.ctx()+"/student/update");
-		$('#update_form').attr('method','post');
-		return true;
+		$('#confirmBtn').on('click',function(){
+			alert('수정하기!!');
+			$('#update_form').attr('action',app.path.ctx()+"/student/update");
+			$('#update_form').attr('method','post');
+			return true;
+		});
 	};
 	var deleteStudent=function(id){
 		alert('삭제할 ID는 ' + id);

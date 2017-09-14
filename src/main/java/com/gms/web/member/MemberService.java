@@ -11,7 +11,7 @@ import com.gms.web.member.StudentDTO;
 
 @Component
 public interface MemberService {
-	public int addMember(Map<String, Object> map);
+	public int addMember(Map<?, ?> map);
 	public List<?> list(CommandDTO cmd);
 	public List<?> findByName(CommandDTO cmd);
 	public StudentDTO findById(CommandDTO cmd);
