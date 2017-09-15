@@ -24,7 +24,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", new SimpleDateFormat("yyyy년MM월dd일").format( new Date()));
 		model.addAttribute("path", PathFactory.create());
-		return "public:common/home.tiles";
+		return "index";
 	}
 }
 

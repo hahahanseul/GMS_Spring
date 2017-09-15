@@ -3,7 +3,6 @@ package com.gms.web.products;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
-
 @Lazy @Component
 public class PathDTO {
 	public String getCtx() {

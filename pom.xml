@@ -228,7 +228,7 @@
     	<artifactId>mariadb-java-client</artifactId>
     	<version>1.5.9</version>
 	</dependency>
-	<!-- Jackson -->
+	<!-- Jackson 
 	<dependency>
 	    <groupId>com.fasterxml.jackson.core</groupId>
 	    <artifactId>jackson-databind</artifactId>
@@ -270,7 +270,7 @@
         <version>2.4</version>
         <classifier>jdk15</classifier>
     </dependency>
-
+-->
       <!-- Test -->
       <dependency>
          <groupId>junit</groupId>
