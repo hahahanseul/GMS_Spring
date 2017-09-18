@@ -96,12 +96,8 @@ meta.algo={
 			var end = e*1;
 			var opcode = 1;
 			for(var i=start;i<=end;i++){
-				if(opcode%2 === 1){
-					sum = sum - i;
-				}else{
-					sum = sum  + i;
-				}
-				opcode +=1;
+				sum = sum + (opcode * i);
+				opcode = opcode * -1;
 			}
 			return sum;
 		}
