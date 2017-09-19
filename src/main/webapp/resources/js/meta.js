@@ -17,46 +17,43 @@ meta.common=(function(){
 	};
 })();
 meta.index =(function(){
-	var $wrapper,$navbar,$container,js,css,img,ctx,algo;
+	var $wrapper,$navbar,$container,js,css,img,ctx,algo,temp;
 	var init=function(){
+		js=$$('j');
+		algo=js+'/algo.js';
+		temp=js+'/template.js';
 		onCreate();
 		};
 	var onCreate=function(){
-			setContentView();
-		   $('#btn').on('click',function(){
-	            $container.empty();
-	            meta.ui.navbar();
-	            meta.navbar.init();
-	            meta.ui.arithmetic();
-	            $('#resultBtn').click(()=>{
-	         		$.getScript(algo,(x1,x2)=>{
-		    			$('#result').text('결과:'
-		            			+ 	series.arithmetic($('#startNo').val(),$('#endNo').val()));
-		    			});
-		        });
-	         });
-		};
-	var setContentView=function(){
 		 $container=$('#container');
-		 js=$$('j');
-		 algo = js + '/algo.js';
 		 img=$$('i');
-		 ctx=$$('x');
-		var $image = $('<img/>',
-				{
-					id:'loading',
-					src: img + '/loading.gif'
-				}
-		);
-		$container.append($image);
-		var $button = $('<input/>',
-		{		
-				id:'btn',
-				type : 'button',
-				value: '버튼'
-		});
-		$container.append($button);
-	};
+		 $.getScript(temp,x=>{
+				var $image = $('<img/>',
+						intro.loading(img)
+				);
+				$container.append($image);
+				var $button = $('<input/>',{		
+					id:'btn',
+					type : 'button',
+					value: '버튼'
+					}
+				);
+				$('#loading').after($button);
+					$('#btn').click(()=>{
+		            $container.empty();
+		            meta.ui.navbar();
+		            meta.navbar.init();
+		            meta.ui.arithmetic();
+		            $('#resultBtn').click(()=>{
+		         		$.getScript(algo,(x1,x2)=>{
+			    			$('#result').text('결과:'
+			            			+ 	series.arithmetic($('#startNo').val(),$('#endNo').val()));
+		    			});
+			        });
+		         });
+		 	});
+		};
+
 	return{init:init};
 })();
 
