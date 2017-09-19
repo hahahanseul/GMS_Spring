@@ -17,7 +17,7 @@ meta.common=(function(){
 	};
 })();
 meta.index =(function(){
-	var $wrapper,$navbar,$container,js,css,img,ctx;
+	var $wrapper,$navbar,$container,js,css,img,ctx,algo;
 	var init=function(){
 		onCreate();
 		};
@@ -29,13 +29,17 @@ meta.index =(function(){
 	            meta.navbar.init();
 	            meta.ui.arithmetic();
 	            $('#resultBtn').click(()=>{
-		            	$('#result').text('결과:'
-		            			+ meta.algo.arithmetic($('#startNo').val(),$('#endNo').val()));
+	         		$.getScript(algo,(x1,x2)=>{
+		    			$('#result').text('결과:'
+		            			+ 	series.arithmetic($('#startNo').val(),$('#endNo').val()));
+		    			});
 		        });
 	         });
 		};
 	var setContentView=function(){
 		 $container=$('#container');
+		 js=$$('j');
+		 algo = js + '/algo.js';
 		 img=$$('i');
 		 ctx=$$('x');
 		var $image = $('<img/>',
@@ -55,41 +59,7 @@ meta.index =(function(){
 	};
 	return{init:init};
 })();
-meta.algo={
-		arithmetic : (s,e)=>{
-	        var sum =0;
-	        var start =s*1 ;
-	        var end =e*1;
-		        for(var i=start;i<=end;i++){
-	        	   sum += i;
-		        }
-		       return sum;
-		},
-		switchSeries : ()=>{
-			var sum = 0;
-			var start = 1;
-			var end = 100;
-			var opcode = 1;
-			for(var i=start;i<=end;i++){
-				sum = sum + (opcode * i);
-				opcode = opcode * -1;
-			}
-			return sum;
-		},
-		geoSeries : x=> {
-			var current = 1;
-			var sum =0;
-			for (var i=0;i<=x-1;i++){
-				current += i;
-				sum += current;
-			}
-			return sum;
-		},
-		fac : x =>{},
-		fibo : x => {
 
-		}
-};
 meta.auth=(function(){
 	var $wrapper,img,css,ctx,js; 
 	var init=function(){onCreate();};
@@ -132,8 +102,11 @@ meta.auth=(function(){
 	return {init:init};
 })();
 meta.navbar = (function(){
+	var algo,js;
 	var init = function(){
 		onCreate();
+		js=$$('j');
+		algo = js + '/algo.js';
 	};
 	var onCreate = function(){
 		setContentView();
@@ -168,9 +141,12 @@ meta.navbar = (function(){
 	    	$('#container').empty();
 	    	meta.ui.arithmetic();
 	    	$('#resultBtn').click(()=>{
-	            	$('#result').text('결과:'
-	            			+ meta.algo.arithmetic($('#startNo').val(),$('#endNo').val()));
-	        });
+	    		$.getScript(algo,(x1,x2)=>{
+	    			$('#result').text('결과:'
+	            			+ 	series.arithmetic($('#startNo').val(),$('#endNo').val()));
+	    			});
+	    		
+    		});
 	    });
 	    $('#switchBtn').click(()=>{
 	    	$('#container').empty();
@@ -179,8 +155,10 @@ meta.navbar = (function(){
 	        $('#startNo').val('1').attr('readonly',true);
 	        $('#endNo').val('100').attr('readonly',true);
 	    	$('#resultBtn').click(()=>{
-            	$('#result').text('결과:'
-            			+ meta.algo.switchSeries());
+	    		$.getScript(algo,()=>{
+	    			$('#result').text('결과:'
+	    					+ series.switchSeries());
+	    		});
 	    	});
 	    });
 	    $('#geoBtn').click(()=>{
@@ -192,10 +170,11 @@ meta.navbar = (function(){
 	        $('#endV').text('몇 번째 항까지?');
 	        $('#endNo').attr('placeholder','몇 번째 항까지?');
 	        $('#resultBtn').click(()=>{
-            	$('#result').text('결과:'
-            			+ meta.algo.geoSeries($('#endNo').val()));
+	        	$.getScript(algo,(x)=>{
+	            	$('#result').text('결과:'
+	            			+series.geoSeries($('#endNo').val()));	        		
+	        	});
 	    	});
-	        
 	    });
 	    $('#facBtn').click(()=>{
 	    	$('#container').empty();
@@ -209,11 +188,13 @@ meta.navbar = (function(){
 	        $('#startNo').val('1').attr('readonly',true);
 	        $('#endV').text('몇 번째 항까지?');
 	        $('#endNo').attr('placeholder','몇 번째 항까지?');
-	    	$('#resultBtn').click(()=>{
-	    		alert('야 먹긴 먹냐');
+	        $.getScript(algo,()=>{
+	        	series.fibonacci('헬로우피보');
+	        });
+/*	    	$('#resultBtn').click(()=>{
             	$('#result').text('결과:'
             			+ meta.algo.fibo($('#endNo').val()));
-	    	});
+	    	});*/
 	    });
 		
 	};
