@@ -17,10 +17,11 @@ meta.common=(function(){
 	};
 })();
 meta.index =(function(){
-	var $wrapper,img,ctx;
+	var $wrapper,$navbar,$container,js,css,img,ctx;
 	var init=function(){
 		onCreate();
-		meta.ui.init();};
+		meta.ui.init();
+		};
 	var onCreate=function(){
 			setContentView();
 		   $('#btn').on('click',function(){
@@ -38,11 +39,15 @@ meta.index =(function(){
 	 		    });
 	 		    $('#switchBtn').on('click',function(){
 	 		    	$('#content').empty();
-	 		        meta.ui.switchSeries();
+	 		        meta.ui.arithmetic();
+	 		        $('h1').text('1부터 100까지 스위치 수열의 합');
+	 		        $('#startNo').val('1');
+	 		        $('#endNo').val('100');
+	 		       $('#startNo, #endNo').attr('readonly',true);
 	 		    	alert('스위치 클릭 ');
 	 		    	$('#resultBtn').on('click', function(){
 		            	$('#result').text('결과:'
-		            			+ meta.algo.switchSeries($('#startNo').val(),$('#endNo').val()));
+		            			+ meta.algo.switchSeries());
 	 		    	});
 	 		    });
 	 		    $('#geoBtn').on('click',function(){
@@ -81,7 +86,7 @@ meta.index =(function(){
 	return{init:init};
 })();
 meta.algo={
-		arithmetic : function(s,e){
+		arithmetic : (s,e)=>{
 	        var sum =0;
 	        var start =s*1 ;
 	        var end =e*1;
@@ -90,10 +95,10 @@ meta.algo={
 		        }
 		       return sum;
 		},
-		switchSeries : function(s,e){
+		switchSeries : ()=>{
 			var sum = 0;
-			var start = s*1;
-			var end = e*1;
+			var start = 1;
+			var end = 100;
 			var opcode = 1;
 			for(var i=start;i<=end;i++){
 				sum = sum + (opcode * i);
@@ -144,7 +149,7 @@ meta.auth=(function(){
 	return {init:init};
 })();
 meta.ui = (function(){
-	var wrapper, img, js, css, ctx;
+	var $wrapper,$navbar, $container, img, js, css, ctx;
 	var init = function(){
 		$wrapper= $('#wrapper');
 		img=$$('i');
@@ -217,7 +222,7 @@ meta.ui = (function(){
 			+'<br>'
 			+'<span id="endV">끝값: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>'
 			+'<br>'
-			+'<h1 id="result"></h1>'
+			+'<h3 id="result"></h3>'
 			+'</div>';
 		$wrapper.after(content);
 		$('#startV').after(meta.comp.input({
@@ -243,7 +248,7 @@ meta.ui = (function(){
 			+'<br>'
 			+'<span id="endV">끝값: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>'
 			+'<br>'
-			+'<h1 id="result"></h1>'
+			+'<h3 id="result"></h3>'
 			+'</div>';
 			$wrapper.after(content);
 			$('#startV').after(meta.comp.input({
