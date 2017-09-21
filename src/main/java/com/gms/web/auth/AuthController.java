@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.gms.web.command.Command;
 import com.gms.web.command.CommandDTO;
 import com.gms.web.member.MemberDTO;
 import com.gms.web.member.MemberService;
@@ -24,7 +25,7 @@ public class AuthController {
 	private static final Logger logger = LoggerFactory.getLogger(AuthController.class);	
 	@Autowired MemberService service;
 	@Autowired MemberDTO member;
-	@Autowired CommandDTO cmd;
+	@Autowired Command cmd;
 	@RequestMapping("/login_view")
 	public String goLogin( Model model) {
 		logger.info("{}","AuthController > login_view");

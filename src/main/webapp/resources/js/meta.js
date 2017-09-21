@@ -47,10 +47,50 @@ meta.index =(function(){
 				});
 				compUI.span('bbsBtn').html('게시판관리').addClass('label label-danger').css({'margin-left':'10px'}).appendTo($hBtn).click(()=>{
 					alert('게시판 가기');
-					var url = ctx + '/get/grade/list';
+					$container.empty();
+					$navbar.append(introUI.navbar());
+					compUI.div('content').appendTo($container);
+					$content = $('#content');
+					compUI.table('board-tab').appendTo($content);
+					compUI.thead('board-thead').appendTo($('#board-tab'));
+					compUI.tr('board-th-tr').appendTo($('#board-thead'));
+					compUI.tbody('board-tbody').appendTo($('#board-tab'));
+					compUI.tr('board-tb-tr').appendTo($('#board-thead'));
+					compUI.th().text('No').appendTo($('#board-th-tr'));
+	                compUI.th().text('제목').appendTo($('#board-th-tr'));
+	                compUI.th().text('내용').appendTo($('#board-th-tr'));
+	                compUI.th().text('글쓴이').appendTo($('#board-th-tr'));
+	                compUI.th().text('등록일').appendTo($('#board-th-tr'));
+	                compUI.th().text('조회수').appendTo($('#board-th-tr'));
+                	compUI.tr('board-tb-tr'+'_'+i).appendTo($('#board-thead'));
+                	for(var i=0;i<7;i++){
+                		compUI.td().css({'text-align':'left'}).text('내용이얌').appendTo($('#board-tb-tr'));
+                	}
+					//$content.append(pageUI.paging());
+                	
+                	
+					compUI.nav('pagination-box').attr('arial-label','Page navigation').css({'width':'17%','margin':'0 auto'}).appendTo($content);
+					compUI.ul('page-ul').addClass('pagination').appendTo($('#pagination-box'));
+					for(var i=0;i<7;i++){
+						compUI.li().appendTo($('#page-ul'));
+					}
+					compUI.a().attr('aria-label','Previous').appendTo($('#page-ul>li:first'));
+					compUI.span('prev').addClass('glyphicon glyphicon-menu-left').attr('aria-hidden','true').appendTo($('#page-ul>li:first>a'));
+					compUI.a().text('1').appendTo($('#page-ul>li:eq(1)'));
+					compUI.a().text('2').appendTo($('#page-ul>li:eq(2)'));
+					compUI.a().text('3').appendTo($('#page-ul>li:eq(3)'));
+					compUI.a().text('4').appendTo($('#page-ul>li:eq(4)'));
+					compUI.a().text('5').appendTo($('#page-ul>li:eq(5)'));
+					compUI.a().attr('aria-label','Next').appendTo($('#page-ul>li:last'));
+					compUI.span('prev').addClass('glyphicon glyphicon-menu-right').attr('aria-hidden','true').appendTo($('#page-ul>li:last>a'));
+/*					for(var i=1;i<=5;i++){
+						compUI.a().text(i).appendTo($('#page-ul>li'));
+					}*/
+					
+/*					var url = ctx + '/get/board/list';
 					$.getJSON(url,x=>{
 						alert('x msg is'+x.msg);
-					});
+					});*/
 				});
 		 	});
 		};
@@ -60,11 +100,11 @@ meta.index =(function(){
 meta.auth=(function(){
 	var $wrapper,img,css,ctx,js,temp; 
 	var init=function(){
-		onCreate();
 		$wrapper=$('#wrapper');
 		img = $$('i');
 		js=$('j');
 		temp = js +'/template.js';
+		onCreate();
 	};
 	var onCreate = function(){setContentView();};
 	var setContentView = function(){

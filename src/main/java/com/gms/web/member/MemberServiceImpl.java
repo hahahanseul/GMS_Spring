@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.gms.web.command.Command;
 import com.gms.web.command.CommandDTO;
 import com.gms.web.grade.GradeDTO;
 import com.gms.web.grade.MajorDTO;
@@ -39,7 +40,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<StudentDTO> list(CommandDTO cmd) {
+	public List<StudentDTO> list(Command cmd) {
 		return (List<StudentDTO>) mapper.selectAll(cmd);
 	}
 	@Override
@@ -50,11 +51,11 @@ public class MemberServiceImpl implements MemberService {
 		return count;
 	}
 	@Override
-	public List<?> findByName(CommandDTO cmd) {
+	public List<?> findByName(Command cmd) {
 		return null;
 	}
 	@Override
-	public StudentDTO findById(CommandDTO cmd) {
+	public StudentDTO findById(Command cmd) {
 		student = mapper.selectById(cmd);
 		return student;
 	}
@@ -64,11 +65,11 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.update(param);	
 	}
 	@Override
-	public int remove(CommandDTO cmd) {
+	public int remove(Command cmd) {
 		return mapper.delete(cmd);
 	}
 	@Override
-	public Map<String,Object> login(CommandDTO cmd) {
+	public Map<String,Object> login(Command cmd) {
 		Map<String, Object> map = new HashMap<>();
 		member = mapper.login(cmd);
 		String page, message = "";

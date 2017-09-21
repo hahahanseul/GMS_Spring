@@ -92,10 +92,20 @@ var compUI={
 		h1    : x=>{return $('<h1/>',{id:x});},
 		span  : x=>{return $('<span/>',{id:x});},
 		iTxt  : x=>{return $('<input/>',{id:x,type:'text'});},
-		aBtn  : x=>{return $('<a>',{href:'#', role: 'button', id:x});},
+		aBtn  : x=>{return $('<a/>',{href:'#', role: 'button', id:x});},
 		iBtn  : x=>{return $('<input/>',{id:x,type:'button'});},
 		image : (x,y)=>{return $('<img/>',{id:x,src:y});},
-		input : (x,y)=>{return $('<input/>',{id:x,type:y});}
+		input : (x,y)=>{return $('<input/>',{id:x,type:y});},
+		table : x=>{return $('<table/>',{id:x , class:'table'});},
+		thead : x=>{return $('<thead/>',{id:x})},
+		tbody : x=>{return $('<tbody/>',{id:x})},
+		tr : x=>{return $('<tr/>',{id:x})},
+		th : ()=>{return $('<th/>')},
+		td : ()=>{return $('<td/>')},
+		nav: x=>{return $('<nav/>',{id: x});},
+		ul : x=>{return $('<ul/>',{id:x})},
+		li : ()=>{return $('<li/>')},
+		a : ()=>{return $('<a/>',{href:'#'})}
 };
 var algoUI={
 	series : ()=>{
@@ -116,4 +126,30 @@ var algoUI={
 		+'<h3 id="result"></h3>'
 		+'</div>';
 	}
+};
+
+
+var pageUI = {
+	paging : ()=>{
+return '<nav aria-label="Page navigation" style="width: 17%; margin:0 auto;">'
+		  +'<ul class="pagination">'
+		    +'<li>'
+		      +'<a href="#" aria-label="Previous">'
+		        +'<span aria-hidden="true">&laquo;</span>'
+		      +'</a>'
+		    +'</li>'
+		    +'<li><a href="#">1</a></li>'
+		    +'<li><a href="#">2</a></li>'
+		    +'<li><a href="#">3</a></li>'
+		    +'<li><a href="#">4</a></li>'
+		    +'<li><a href="#">5</a></li>'
+		    +'<li>'
+		      +'<a href="#" aria-label="Next">'
+		        +'<span aria-hidden="true">&raquo;</span>'
+		      +'</a>'
+		    +'</li>'
+		  +'</ul>'
+		+'</nav>'
+	}
+	
 };
