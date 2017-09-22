@@ -11,6 +11,7 @@ import lombok.Data;
 public class Article implements Serializable {
 	private static final long serialVersionUID=1L;
 	private String id, title, content, regdate;
+	private int articleSeq, hitcount;
 	public String getId() {
 		return id;
 	}
@@ -50,7 +51,7 @@ public class Article implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	private int articleSeq, hitcount;
+
 	
 	
 	

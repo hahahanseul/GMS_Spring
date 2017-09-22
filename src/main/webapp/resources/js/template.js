@@ -128,6 +128,28 @@ var algoUI={
 	}
 };
 
+var bbsUI={	
+		tbl : ()=>{
+			var tbl ='<table id="tbl" border=1 style="border-collapse:collapse">'
+				+'<thead><tr style="height:25px;">';
+			var a = [
+				{width:'5%', txt:'NO'},
+				{width:'20%', txt:'제 목'},
+				{width:'36%', txt:'내 용'},
+				{width:'15%', txt:'글쓴이'},
+				{width:'15%', txt:'작성일'},
+				{width:'9%', txt:'조회수'}
+			];
+			$.each(a,(i,j)=>{
+				tbl+='<th style="width: ' + j.width
+				+'; text-align: center;">' + j.txt+'</th>'
+			});
+			tbl+='</tr></thead><tbody id="tbody">';
+			tbl+= '</tbody></table></div>';
+			return tbl;
+		}
+}
+
 
 var pageUI = {
 	paging : ()=>{

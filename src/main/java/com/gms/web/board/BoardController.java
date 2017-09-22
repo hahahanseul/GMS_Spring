@@ -33,11 +33,12 @@ public class BoardController {
 		switch(category) {
 		case "board" : 
 			cmd  =null;
-/*			listService =(x)->{
+			listService =(x)->{
 					return boardMapper.selectSome(cmd);
 			};
-			map.put("list", listService.execute(cmd));*/
-			map.put("msg", "Hello Ajax");
+			System.out.println("%%%%%%%"+listService);
+			map.put("result", "success");
+			map.put("list", listService.execute(cmd));
 			break;
 		case "grade" :
 			cmd  =null;

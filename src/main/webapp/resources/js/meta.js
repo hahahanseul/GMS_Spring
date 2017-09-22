@@ -47,50 +47,70 @@ meta.index =(function(){
 				});
 				compUI.span('bbsBtn').html('게시판관리').addClass('label label-danger').css({'margin-left':'10px'}).appendTo($hBtn).click(()=>{
 					alert('게시판 가기');
-					$container.empty();
-					$navbar.append(introUI.navbar());
-					compUI.div('content').appendTo($container);
-					$content = $('#content');
-					compUI.table('board-tab').appendTo($content);
-					compUI.thead('board-thead').appendTo($('#board-tab'));
-					compUI.tr('board-th-tr').appendTo($('#board-thead'));
-					compUI.tbody('board-tbody').appendTo($('#board-tab'));
-					compUI.tr('board-tb-tr').appendTo($('#board-thead'));
-					compUI.th().text('No').appendTo($('#board-th-tr'));
-	                compUI.th().text('제목').appendTo($('#board-th-tr'));
-	                compUI.th().text('내용').appendTo($('#board-th-tr'));
-	                compUI.th().text('글쓴이').appendTo($('#board-th-tr'));
-	                compUI.th().text('등록일').appendTo($('#board-th-tr'));
-	                compUI.th().text('조회수').appendTo($('#board-th-tr'));
-                	compUI.tr('board-tb-tr'+'_'+i).appendTo($('#board-thead'));
-                	for(var i=0;i<7;i++){
-                		compUI.td().css({'text-align':'left'}).text('내용이얌').appendTo($('#board-tb-tr'));
-                	}
-					//$content.append(pageUI.paging());
-                	
-                	
-					compUI.nav('pagination-box').attr('arial-label','Page navigation').css({'width':'17%','margin':'0 auto'}).appendTo($content);
-					compUI.ul('page-ul').addClass('pagination').appendTo($('#pagination-box'));
-					for(var i=0;i<7;i++){
-						compUI.li().appendTo($('#page-ul'));
-					}
-					compUI.a().attr('aria-label','Previous').appendTo($('#page-ul>li:first'));
-					compUI.span('prev').addClass('glyphicon glyphicon-menu-left').attr('aria-hidden','true').appendTo($('#page-ul>li:first>a'));
-					compUI.a().text('1').appendTo($('#page-ul>li:eq(1)'));
-					compUI.a().text('2').appendTo($('#page-ul>li:eq(2)'));
-					compUI.a().text('3').appendTo($('#page-ul>li:eq(3)'));
-					compUI.a().text('4').appendTo($('#page-ul>li:eq(4)'));
-					compUI.a().text('5').appendTo($('#page-ul>li:eq(5)'));
-					compUI.a().attr('aria-label','Next').appendTo($('#page-ul>li:last'));
-					compUI.span('prev').addClass('glyphicon glyphicon-menu-right').attr('aria-hidden','true').appendTo($('#page-ul>li:last>a'));
-/*					for(var i=1;i<=5;i++){
-						compUI.a().text(i).appendTo($('#page-ul>li'));
-					}*/
-					
-/*					var url = ctx + '/get/board/list';
-					$.getJSON(url,x=>{
-						alert('x msg is'+x.msg);
-					});*/
+					$.getJSON(ctx + '/get/board/list',data=>{
+						$container.empty();
+						$navbar.append(introUI.navbar());
+						compUI.div('content').appendTo($container);
+						$content = $('#content');
+						var tbl=bbsUI.tbl();
+/*						var a = 
+							[{
+								a :'1',
+								b: '한국인사',
+								c: '안녕',
+								d: '길동',
+								e: '2017-09-10',
+								f: 10
+							},
+							{
+								a :2,
+								b: '미국인사',
+								c: 'Hello',
+								d: 'James',
+								e: '2017-09-10',
+								f: 10
+							},
+							{
+								a :3,
+								b: '중국인사',
+								c: '니하오',
+								d: '마오',
+								e: '2017-09-10',
+								f: 10
+							},
+							{
+								a :4,
+								b: '일본인사',
+								c: '곤니치와',
+								d: '마츠코',
+								e: '2017-09-12',
+								f: 10
+							},
+							{
+								a :5,
+								b: '태국인사',
+								c: '사와디캅',
+								d: '창',
+								e: '2017-09-13',
+								f: 10
+							}
+						];*/
+						var tr ='';
+						alert('결과:  ' + data.result)
+						$.each(data.list,(i,j)=>{
+							tr+= '<tr style="height: 25px;">'
+								+'<td>'+j.articleSeq+'</td>' 
+								+'<td>'+j.title+'</td>' 
+								+'<td>'+j.content+'</td>' 
+								+'<td>'+j.id+'</td>' 
+								+'<td>'+j.regdate+'</td>' 
+								+'<td>'+j.hitcount+'</td>' 
+								+'</tr>'
+						});
+						console.log('tr : ' +tr);
+						$content.html(tbl);
+						$('#tbody').html(tr);
+					});
 				});
 		 	});
 		};
@@ -121,6 +141,7 @@ meta.auth=(function(){
 					value: 'CANCEL'
 			})); 
 		});
+		
 	};
 	var joinView = function(){
 	};
