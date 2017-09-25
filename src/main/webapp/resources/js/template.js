@@ -84,6 +84,7 @@ var introUI={
 		+'		  </div>'
 		+'		</nav>'
 	}
+	
 };
 
 var compUI={
@@ -164,7 +165,7 @@ var bbsUI={
             +'</div>'
             +'<div style="width: 90%; margin: 50px auto 20px auto;">'
             +'<span id="total" style="font-size: 20px;"> 총 게시글 수: </span>'
-            +'<input class="btn btn-warning" style="float:right" name="search" type="submit"  value="글쓰기!"/>'
+            +'<input id="writeBtn" class="btn btn-warning" style="float:right" name="search" type="submit"  value="글쓰기!"/>'
             +'</div>'
 		},
 		pagination:()=>{
@@ -189,5 +190,48 @@ var bbsUI={
 					    +'<li><a><span class="glyphicon glyphicon-step-forward"></span></a></li>'
 					  +'</ul>'
 					+'</nav>'
+		},
+		detail:()=>{
+			return '<div class="page-header">'
+			+'<h1 style="display: inline; margin: 0 50px;">게시판</h1>'
+			+'<a style="font-size:large" href="">목록가기</a>'
+		+'</div>'
+		+'<div class="container">'
+			+'<div class="row">'
+				+'<div class="col-md-12">'
+					+'<div class="well well-sm">'
+						+'<form class="form-horizontal" method="post">'
+							+'<fieldset>'
+								+'<legend class="text-center header">게시글 쓰기</legend>'
+								+'<div class="form-group">'
+									+'<span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>'
+									+'<div class="col-md-12">'
+									+'<input id="fname" name="title" type="text" placeholder="제 목" class="form-control" />'
+									+'</div>'
+								+'</div>'
+								+'<div class="form-group">'
+									+'<span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>'
+									+'<div class="col-md-12">'
+									+'<input id="lname" name="writer" type="text" placeholder="글쓴이" class="form-control" />'
+									+'</div>'
+								+'</div>'
+								+'<div class="form-group">'
+									+'<span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>'
+									+'<div class="col-md-12">'
+										+'<textarea class="form-control" id="message" name="message" rows="10"></textarea>'
+									+'</div>'
+								+'</div>'
+								+'<div class="form-group">'
+									+'<div class="col-md-12 text-center">'
+										+'<button id="confirmBtn" type="submit" style="width: 200px" class="btn btn-primary btn-lg">확 인</button>'
+										+'<button id="cancelBtn" type="reset" style="width: 200px" class="btn btn-danger btn-lg">취 소</button>'
+									+'</div>'
+								+'</div>'
+							+'</fieldset>'
+						+'</form>'
+					+'</div>'
+				+'</div>'
+			+'</div>'
+		+'</div>'
 		}
 }

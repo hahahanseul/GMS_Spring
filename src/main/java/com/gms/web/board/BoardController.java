@@ -30,7 +30,6 @@ public class BoardController {
 	public @ResponseBody Map<?,?> boardList(@PathVariable("cate") String category) {
 		logger.info("boardList {}","진입");
 		Map<String,Object> map = new HashMap<>();
-		System.out.println("board/list에 들어왔엉!!");
 		IListService listService = null;
 		IGetService countService = null;
 		switch(category) {
@@ -57,7 +56,12 @@ public class BoardController {
 		}
 		return map;
 	}
-	public @ResponseBody Map<?,?> get(){ return null;}
+	@RequestMapping("/get/{cate}/{seq}")
+	public @ResponseBody Map<?,?> get(@PathVariable("cate") String category, @PathVariable("seq") String seq){ 
+		logger.info("getSequence {}","진입");
+		Map<String, Object> map = new HashMap<>();
+		return map;
+		}
 	public @ResponseBody Map<?,?> list(){ return null;}
 	public @ResponseBody Map<?,?> put(){ return null;}
 	public @ResponseBody Map<?,?> delete(){ return null;}
