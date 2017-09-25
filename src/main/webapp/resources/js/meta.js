@@ -52,6 +52,7 @@ meta.index =(function(){
 						$navbar.append(introUI.navbar());
 						compUI.div('content').appendTo($container);
 						$content = $('#content');
+						$content.html(bbsUI.search());
 						var tbl=bbsUI.tbl();
 /*						var a = 
 							[{
@@ -96,7 +97,7 @@ meta.index =(function(){
 							}
 						];*/
 						var tr ='';
-						alert('결과:  ' + data.result)
+						alert('결과:  ' + data.result);
 						$.each(data.list,(i,j)=>{
 							tr+= '<tr style="height: 25px;">'
 								+'<td>'+j.articleSeq+'</td>' 
@@ -108,8 +109,10 @@ meta.index =(function(){
 								+'</tr>'
 						});
 						console.log('tr : ' +tr);
-						$content.html(tbl);
+						$content.append(tbl);
+						$content.append(bbsUI.pagination());
 						$('#tbody').html(tr);
+						$('#total').html("총게시글 수:  "+data.total);
 					});
 				});
 		 	});

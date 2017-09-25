@@ -130,7 +130,7 @@ var algoUI={
 
 var bbsUI={	
 		tbl : ()=>{
-			var tbl ='<table id="tbl" border=1 style="border-collapse:collapse">'
+			var tbl ='<table id="tbl" border=1 style="border-collapse:collapse; margin: 0 auto">'
 				+'<thead><tr style="height:25px;">';
 			var a = [
 				{width:'5%', txt:'NO'},
@@ -147,31 +147,47 @@ var bbsUI={
 			tbl+='</tr></thead><tbody id="tbody">';
 			tbl+= '</tbody></table></div>';
 			return tbl;
+		},
+		search :()=>{
+			return '<div style="width:100%; margin: 30px auto;">'
+            +'<div id="board" style="width:80%;margin:0 auto;">'
+            +'<div id="search-box" style="width:100%;margin:0 auto;text-align:center;">'
+            +'<select id="search-opt" name="searchOpt" class="form-control" style="width:15%; display:inline-block; margin-right:20px">'
+            +'<option value="writer">작성자</option>'
+            +'<option value="title">제목</option>'
+            +'</select>'
+            +'<input id="search-txt" type="text" class="form-control" style="width:60%; display:inline-block;  margin-right:20px;" name="searchTxt" placeholder="작성자 또는 제목을  검색 ++">'
+            +'<input class="btn btn-primary" style="width:15%" name="search" type="submit"  value="검색!"/>'
+            +'<input type="hidden" name="action" value="search"/>'
+            +'<input type="hidden" name="pageName" value="list" />'
+            +'<input type="hidden" name="pageNumber" value="1" />'
+            +'</div>'
+            +'<div style="width: 90%; margin: 50px auto 20px auto;">'
+            +'<span id="total" style="font-size: 20px;"> 총 게시글 수: </span>'
+            +'<input class="btn btn-warning" style="float:right" name="search" type="submit"  value="글쓰기!"/>'
+            +'</div>'
+		},
+		pagination:()=>{
+			return '<nav aria-label="Page navigation" style="text-align:center">'
+					  +'<ul class="pagination">'
+						+'<li><a href="#"><span class="glyphicon glyphicon-step-backward"></span></a></li>'
+					    +'<li>'
+					      +'<a href="#" aria-label="Previous">'
+					        +'<span aria-hidden="true">&laquo;</span>'
+					      +'</a>'
+					    +'</li>'
+					    +'<li><a href="#">1</a></li>'
+					    +'<li><a href="#">2</a></li>'
+					    +'<li><a href="#">3</a></li>'
+					    +'<li><a href="#">4</a></li>'
+					    +'<li><a href="#">5</a></li>'
+					    +'<li>'
+					      +'<a href="#" aria-label="Next">'
+					        +'<span aria-hidden="true">&raquo;</span>'
+					      +'</a>'
+					    +'</li>'
+					    +'<li><a><span class="glyphicon glyphicon-step-forward"></span></a></li>'
+					  +'</ul>'
+					+'</nav>'
 		}
 }
-
-
-var pageUI = {
-	paging : ()=>{
-return '<nav aria-label="Page navigation" style="width: 17%; margin:0 auto;">'
-		  +'<ul class="pagination">'
-		    +'<li>'
-		      +'<a href="#" aria-label="Previous">'
-		        +'<span aria-hidden="true">&laquo;</span>'
-		      +'</a>'
-		    +'</li>'
-		    +'<li><a href="#">1</a></li>'
-		    +'<li><a href="#">2</a></li>'
-		    +'<li><a href="#">3</a></li>'
-		    +'<li><a href="#">4</a></li>'
-		    +'<li><a href="#">5</a></li>'
-		    +'<li>'
-		      +'<a href="#" aria-label="Next">'
-		        +'<span aria-hidden="true">&raquo;</span>'
-		      +'</a>'
-		    +'</li>'
-		  +'</ul>'
-		+'</nav>'
-	}
-	
-};

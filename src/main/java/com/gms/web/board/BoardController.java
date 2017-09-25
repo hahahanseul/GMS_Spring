@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gms.web.command.Command;
 import com.gms.web.mapper.BoardMapper;
 import com.gms.web.mapper.GradeMapper;
+import com.gms.web.service.IGetService;
 import com.gms.web.service.IListService;
 
 
@@ -30,14 +31,18 @@ public class BoardController {
 		Map<String,Object> map = new HashMap<>();
 		System.out.println("board/list에 들어왔엉!!");
 		IListService listService = null;
+		IGetService countService = null;
 		switch(category) {
 		case "board" : 
 			cmd  =null;
 			listService =(x)->{
-					return boardMapper.selectSome(cmd);
+					return boardMapper.selectList(cmd);
 			};
-			System.out.println("%%%%%%%"+listService);
+			countService = (x)->{
+				return boardMapper.count(cmd);
+			};
 			map.put("result", "success");
+			map.put("total", countService.execute(cmd));
 			map.put("list", listService.execute(cmd));
 			break;
 		case "grade" :
