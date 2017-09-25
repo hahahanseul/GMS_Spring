@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gms.web.command.Command;
+import com.gms.web.command.ResultMap;
 import com.gms.web.mapper.BoardMapper;
 import com.gms.web.mapper.GradeMapper;
 import com.gms.web.service.IGetService;
@@ -41,8 +42,9 @@ public class BoardController {
 			countService = (x)->{
 				return boardMapper.count(cmd);
 			};
+			ResultMap r = (ResultMap) countService.execute(cmd);
 			map.put("result", "success");
-			map.put("total", countService.execute(cmd));
+			map.put("total", r);
 			map.put("list", listService.execute(cmd));
 			break;
 		case "grade" :

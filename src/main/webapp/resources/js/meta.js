@@ -54,48 +54,7 @@ meta.index =(function(){
 						$content = $('#content');
 						$content.html(bbsUI.search());
 						var tbl=bbsUI.tbl();
-/*						var a = 
-							[{
-								a :'1',
-								b: '한국인사',
-								c: '안녕',
-								d: '길동',
-								e: '2017-09-10',
-								f: 10
-							},
-							{
-								a :2,
-								b: '미국인사',
-								c: 'Hello',
-								d: 'James',
-								e: '2017-09-10',
-								f: 10
-							},
-							{
-								a :3,
-								b: '중국인사',
-								c: '니하오',
-								d: '마오',
-								e: '2017-09-10',
-								f: 10
-							},
-							{
-								a :4,
-								b: '일본인사',
-								c: '곤니치와',
-								d: '마츠코',
-								e: '2017-09-12',
-								f: 10
-							},
-							{
-								a :5,
-								b: '태국인사',
-								c: '사와디캅',
-								d: '창',
-								e: '2017-09-13',
-								f: 10
-							}
-						];*/
+
 						var tr ='';
 						alert('결과:  ' + data.result);
 						$.each(data.list,(i,j)=>{
@@ -112,7 +71,7 @@ meta.index =(function(){
 						$content.append(tbl);
 						$content.append(bbsUI.pagination());
 						$('#tbody').html(tr);
-						$('#total').html("총게시글 수:  "+data.total);
+						$('#total').html("총게시글 수:  "+data.total.count);
 					});
 				});
 		 	});

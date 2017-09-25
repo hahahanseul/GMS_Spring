@@ -27,7 +27,7 @@
 	<select id="selectList" resultMap="article" parameterType="com.gms.web.command.Command">
 		select * from board
 	</select>
-	<select id="count" resultType="string" parameterType="com.gms.web.command.Command">
+	<select id="count" resultMap="resultMap" parameterType="com.gms.web.command.Command">
  		select count(*) as count from board
 	</select>
  	<update id="update" parameterType="com.gms.web.command.Command">
