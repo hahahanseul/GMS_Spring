@@ -107,9 +107,9 @@ meta.board=(()=>{
 					e.preventDefault();
 					update(x);
 				});
-				$('#cancelBtn').text('삭제').click(e=>{
+				$('#cancelBtn').attr('data-toggle','modal').attr('data-target','#modal').addClass('btn btn-primary').text('삭제').click(e=>{
 					e.preventDefault();
-					deleteArticle(x);
+					deleteArticle(x+','+pass);
 				});
 			});
 			
