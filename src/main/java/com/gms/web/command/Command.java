@@ -76,4 +76,5 @@ public class Command implements Commandable{
 	public String toString() {
 		return "Command [DEST=" + dir +"/"+page+ ".jsp" +",ACTION=" +action+ ", page="+ "]";
 	}
+
 }

@@ -17,6 +17,7 @@ import com.gms.web.command.Command;
 import com.gms.web.command.ResultMap;
 import com.gms.web.mapper.BoardMapper;
 import com.gms.web.mapper.GradeMapper;
+import com.gms.web.service.IDeleteService;
 import com.gms.web.service.IGetService;
 import com.gms.web.service.IListService;
 import com.gms.web.service.IPutService;
@@ -77,14 +78,31 @@ public class BoardController {
 	@RequestMapping(value="/put/articles", method=RequestMethod.POST,consumes="application/json")
 	public @ResponseBody Map<?,?> put(@RequestBody Article art){
 		logger.info("컨트롤러put {}","진입");
+		cmd.setSearch(art.getArticleSeq());
+		cmd.setAction(art.getTitle());
+		cmd.setPage(art.getContent());
+		System.out.println("아티클시퀀스야::    "+cmd.getSearch());
+		System.out.println("수정된 타이틀이야아아::"+cmd.getAction());
+		System.out.println("수정된 컨텐츠야아아아::    "+cmd.getPage());
+		Map<String, Object> map = new HashMap<>();
 		IPutService updateService = null;
 		updateService=(x)->{
 			boardMapper.update(cmd);
 		};
-		Map<String, Object> map = new HashMap<>();
+		updateService.execute(cmd);
 		map.put("msg", art.getTitle());
+		map.put("articleSeq",cmd.getSearch());
 		return map;
 	}
-	public @ResponseBody Map<?,?> delete(){ return null;}
+	public @ResponseBody Map<?,?> delete(){
+		IDeleteService deleteService = null;
+		deleteService =(x)->{
+			boardMapper.delete(cmd);
+		};
+		deleteService.execute(cmd);
+		Map<String, Object> map = new HashMap<>();
+		map.put("articleSeq",cmd.getSearch());
+		return map;
+	}
 	
 }

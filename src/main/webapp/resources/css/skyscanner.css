@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+#headcontent{
+    position: relative;
+}
+
+#headcontent #search_div{
+   max-width: 1048px;
+    margin: 20px auto;
+    width: 100%;
+    position: relative;
+}
+
+.choose-round-radio{
+    float: left;
+    color: #fff; 
+    argin-top: -.375rem; 
+    argin-bottom: .75rem;
+}
+#fromwhere{
+   position: relative;
+    direction: ltr;
+    float: left;
+    width: 46%;
+    vertical-align: top;
+}
+#towhere{
+   position: relative;
+    direction: ltr;
+    float: right;
+    width: 48%;
+}
+#where_to {
+	width: 100%;
+}
+#where_to>div{
+	display: inline-block;
+	vertical-align: top;
+}
+
+#where_to input[type=text]{
+    height: 2.25rem;
+    padding: .375rem .75rem;
+    border: .0625rem solid #e6e4eb;
+    border-radius: .1875rem;
+    background: #fff;
+    color: #524c61;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 1rem;
+    line-height: 1.5rem;
+} 
+.place-lable{
+   direction: ltr;
+   color: #fff;
+   	display: block;
+    font-size: .75rem;
+    line-height: 1.125rem;
+    color: #fff;
+    height: 1.125rem;
+    margin: 0;
+}
+
+.js-search-button{
+   position: absolute;
+    bottom: 8px;
+    right: 16px;
+    font-size: 18px;
+}
+#switch-where-btn{
+   position: absolute;
+    background: #fff;
+    top: 1.125rem;
+    border-top: 1px solid #e6e4eb;
+    border-right: 0;
+    border-left: 0;
+    border-bottom: 1px solid #e6e4eb;
+    left: 30%;
+    height: 36px;
+    width: 4%;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: button;
+    text-transform: none;
+}

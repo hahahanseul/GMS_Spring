@@ -108,18 +108,16 @@ meta.board=(()=>{
 				$('#writer').val(data.article.id).attr('readonly','true');
 				$('#regdate').val(data.article.regdate).attr('readonly','true');
 				$('#message').text(data.article.content).attr('readonly','true');
-				alert('아이디가 보이니:  ' + data.article.id);
-				var _seq = data.article.articleSeq;
-				var _title = $('#title').val();
-				var _writer = $('#writer').val();
-				var _message = $('#message').val();
 				$('#confirmBtn').text('수정').click(e=>{
 					e.preventDefault();
 					$('legend').text('게시글 수정하기');
-					$('#title').val(data.article.title).removeAttr('readonly');
-					$('#regdate').val(data.article.regdate).removeAttr('readonly');
-					$('#message').text(data.article.content).removeAttr('readonly');
+					$('#title').attr('placeholder',data.article.title).removeAttr('readonly');
+					$('#message').attr('placeholder',data.article.content).removeAttr('readonly');
 					$('#confirmBtn').text('확인').attr('id','updateBtn').click(e=>{
+						var _seq = data.article.articleSeq;
+						var _title = $('#title').val();
+						var _writer = $('#writer').val();
+						var _message = $('#message').val();
 						e.preventDefault();
 						$.ajax({
 							url: ctx+'/put/articles',
@@ -132,7 +130,6 @@ meta.board=(()=>{
 							}),
 							contentType : 'application/json',
 							success: data=>{
-								alert('ajax통신성공'+ data.msg);
 								detail(data.articleSeq);
 							},
 							error : (x,s,m)=>{

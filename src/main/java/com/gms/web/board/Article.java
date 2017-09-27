@@ -10,8 +10,7 @@ import lombok.Data;
 @Data @Lazy @Component
 public class Article implements Serializable {
 	private static final long serialVersionUID=1L;
-	private String id, title, content, regdate;
-	private int articleSeq, hitcount;
+	private String id, title, content, regdate,articleSeq, hitcount;
 	public String getId() {
 		return id;
 	}
@@ -36,16 +35,16 @@ public class Article implements Serializable {
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
-	public int getArticleSeq() {
+	public String getArticleSeq() {
 		return articleSeq;
 	}
-	public void setArticleSeq(int articleSeq) {
+	public void setArticleSeq(String articleSeq) {
 		this.articleSeq = articleSeq;
 	}
-	public int getHitcount() {
+	public String getHitcount() {
 		return hitcount;
 	}
-	public void setHitcount(int hitcount) {
+	public void setHitcount(String hitcount) {
 		this.hitcount = hitcount;
 	}
 	public static long getSerialversionuid() {

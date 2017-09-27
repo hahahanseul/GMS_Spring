@@ -23,7 +23,7 @@
   	<insert id="insert" parameterType = "com.gms.web.command.Command">
 	</insert>
  	<select id="selectOne" resultMap="article" parameterType="com.gms.web.command.Command">
- 	 	SELECT id, title, content, hitcount, regdate
+ 	 	SELECT article_seq as articleSeq ,id, title, content, hitcount, regdate
 	 	FROM Board WHERE ${column} LIKE #{search}
  	</select>
 	<select id="selectList" resultMap="article" parameterType="com.gms.web.command.Command">
@@ -33,6 +33,8 @@
  		select count(*) as count from board
 	</select>
  	<update id="update" parameterType="com.gms.web.command.Command">
+ 		UPDATE Board SET title=#{action}, content=#{page}
+	 	WHERE article_seq= #{search}
  	</update>
  	<delete id="delete" parameterType="com.gms.web.command.Command">
  	</delete>
