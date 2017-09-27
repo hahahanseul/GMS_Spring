@@ -97,15 +97,50 @@ meta.board=(()=>{
 		init();
 		alert('선택한 시퀀스:    ' + x);
 		$.getJSON(ctx + '/get/board/'+x,data=>{
+			var pass='';
 			$.getScript(temp,()=>{
 				$container.empty();
 				compUI.div('content').appendTo($container);
 				$content = $('#content');
 				$content.html(bbsUI.detail());
 				$('legend').text('게시글 보기');
+				$('#title').val(data.article.title).attr('readonly','true');
+				$('#writer').val(data.article.id).attr('readonly','true');
+				$('#regdate').val(data.article.regdate).attr('readonly','true');
+				$('#message').text(data.article.content).attr('readonly','true');
+				alert('아이디가 보이니:  ' + data.article.id);
+				var _seq = data.article.articleSeq;
+				var _title = $('#title').val();
+				var _writer = $('#writer').val();
+				var _message = $('#message').val();
 				$('#confirmBtn').text('수정').click(e=>{
 					e.preventDefault();
-					update(x);
+					$('legend').text('게시글 수정하기');
+					$('#title').val(data.article.title).removeAttr('readonly');
+					$('#regdate').val(data.article.regdate).removeAttr('readonly');
+					$('#message').text(data.article.content).removeAttr('readonly');
+					$('#confirmBtn').text('확인').attr('id','updateBtn').click(e=>{
+						e.preventDefault();
+						$.ajax({
+							url: ctx+'/put/articles',
+							method: 'post',
+							data: JSON.stringify({
+							'articleSeq' : _seq,
+							'title': _title,
+							'id' : _writer,
+							'content':_message
+							}),
+							contentType : 'application/json',
+							success: data=>{
+								alert('ajax통신성공'+ data.msg);
+								detail(data.articleSeq);
+							},
+							error : (x,s,m)=>{
+								alert('글 수정시 에러발생' + m);
+							}
+						});
+					});
+					$('#cancelBtn').text('취소').attr('id','resetBtn').attr('type','reset').removeAttr('data-toggle').removeAttr('data-target');
 				});
 				$('#cancelBtn').attr('data-toggle','modal').attr('data-target','#modal').addClass('btn btn-primary').text('삭제').click(e=>{
 					e.preventDefault();
@@ -123,7 +158,6 @@ meta.board=(()=>{
 				compUI.div('content').appendTo($container);
 				$content = $('#content');
 				$content.html(bbsUI.detail());
-				$('legend').text('게시글 수정하기');
 				$('#confirmBtn').click(e=>{
 					e.preventDefault();
 					alert('리스트로 돌아가고 싶어');

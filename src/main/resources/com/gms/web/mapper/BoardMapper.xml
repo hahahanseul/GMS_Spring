@@ -23,6 +23,8 @@
   	<insert id="insert" parameterType = "com.gms.web.command.Command">
 	</insert>
  	<select id="selectOne" resultMap="article" parameterType="com.gms.web.command.Command">
+ 	 	SELECT id, title, content, hitcount, regdate
+	 	FROM Board WHERE ${column} LIKE #{search}
  	</select>
 	<select id="selectList" resultMap="article" parameterType="com.gms.web.command.Command">
 		select * from board
